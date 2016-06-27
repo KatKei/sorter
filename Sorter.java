@@ -1,14 +1,15 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 //import java.nio.file.spi.FileTypeDetector
 
 public class Sorter
 {
-  String keyword;
-  String fileType;
-  ArrayList<String> types;
-  File folder;
-  File newFolder;
+  static String keyword;
+  static String fileType;
+  static ArrayList<String> types;
+  static File folder;
+  static File newFolder;
 
   public static void main(String[] args)
   {
@@ -28,22 +29,17 @@ public class Sorter
         fileType=sc.next();
       }
     }
-    fileType = NULL;
-    newFolder = new File(System.getProperty("user.dir")+ "/" + keyword).mkdirs();
-
-
-
-
-
-
+    fileType = null;
+    newFolder = new File(System.getProperty("user.dir")+ "/" + keyword);
+    newFolder.mkdirs();
   }
   public static void sortFile(File fileEntry) throws IOException
   {
     //try
     //{
 
-    	   if(fileEntry.renameTo(System.getProperty("user.dir") + "/" + newFolder.getName() + "/" + fileEntry.getName())))
-         {
+    	   if(fileEntry.renameTo(new File(System.getProperty("user.dir") + "/" + newFolder.getName() + "/" + fileEntry.getName())))
+    	   {
     		     System.out.println("File is moved successful!");
     	   }
          else
@@ -51,11 +47,6 @@ public class Sorter
     		     System.out.println("File is failed to move!");
     	   }
 
-    	//}
-      //catch(Exception e)
-      //{
-    		//e.printStackTrace();
-    	//}
   }
   public static void recurseDirectory(final File folder) throws IOException
   {
